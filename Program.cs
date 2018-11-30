@@ -96,7 +96,7 @@ namespace memeProvider
             var tag =  message.Tags;
             bool containsEmoji = false;
             if (tag.Count != 0){
-                containsEmoji = tag.ElementAt(0).ToString().Contains("Emoji", StringComparison.Ordinal);
+                containsEmoji = tag.ElementAt(0).ToString().Contains("Emoji");    //"Emoji", StringComparison.Ordinal); => netcoreapp 2.1 remains
             }
             
             if (message.HasStringPrefix("!", ref argPos) || containsEmoji){

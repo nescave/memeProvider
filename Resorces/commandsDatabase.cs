@@ -5,13 +5,12 @@ namespace alternativeBot.Resorces
 {
     public class commandsDatabase
     {
-        
+        // Dictionary<string,string> emotes = new Dictionary<string, string>
 
-        // static EmotesDictionaryInit(){
+        //  public void EmotesDictionaryInit(){
 
-        //     public static Dictionary<string, string> emotes = new Dictionary<string, string>();
+        //     emotes.Add("pope", )
 
-
-        // } 
+        //  } 
     }
 }
