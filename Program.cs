@@ -10,15 +10,16 @@ using Discord;
 using Discord.WebSocket;
 using Discord.Commands;
 
-namespace alternativeBot
+namespace memeProvider
 {
+    
 	public class Program
 	{
         
 		public static void Main(string[] args)
 			=> new Program().MainAsync().GetAwaiter().GetResult();
 
-        private string path = "..\\alternativeBot\\Data\\Token.txt";
+        private string path = "..\\memeProvider\\Data\\Token.txt";
         private string token;
         public DiscordSocketClient _client;
         public CommandService _commands;
@@ -26,6 +27,9 @@ namespace alternativeBot
 
 		public async Task MainAsync()
 		{   
+
+
+
             _client = new DiscordSocketClient();
             _commands = new CommandService();
             _services = new ServiceCollection()
@@ -85,18 +89,17 @@ namespace alternativeBot
         public async Task HandleCommandAsync(SocketMessage arg){
             var message = arg as SocketUserMessage;
 
-            if (message is null || message.Author.IsBot){
+            if (message is null || message.Author.IsBot)
                 return;
-            }
 
             int argPos = 0;
             var tag =  message.Tags;
-            bool contains = false;
+            bool containsEmoji = false;
             if (tag.Count != 0){
-                contains = tag.ElementAt(0).ToString().Contains("Emoji", StringComparison.Ordinal);
+                containsEmoji = tag.ElementAt(0).ToString().Contains("Emoji", StringComparison.Ordinal);
             }
             
-            if (message.HasStringPrefix("!", ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos) || contains){
+            if (message.HasStringPrefix("!", ref argPos) || containsEmoji){
                 var context = new SocketCommandContext(_client, message);
 
                 var result = await _commands.ExecuteAsync(context, argPos, _services);

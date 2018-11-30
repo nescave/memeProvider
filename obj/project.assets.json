@@ -6044,11 +6044,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nescave\\Desktop\\alternativeBot\\alternativeBot.csproj",
+      "projectUniqueName": "C:\\Users\\Nescave\\repoDiscord\\memeProvider\\alternativeBot.csproj",
       "projectName": "alternativeBot",
-      "projectPath": "C:\\Users\\Nescave\\Desktop\\alternativeBot\\alternativeBot.csproj",
+      "projectPath": "C:\\Users\\Nescave\\repoDiscord\\memeProvider\\alternativeBot.csproj",
       "packagesPath": "C:\\Users\\Nescave\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nescave\\Desktop\\alternativeBot\\obj\\",
+      "outputPath": "C:\\Users\\Nescave\\repoDiscord\\memeProvider\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
