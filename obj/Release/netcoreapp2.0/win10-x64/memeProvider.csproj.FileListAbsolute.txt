@@ -1,0 +1,14 @@
+C:\Users\Nescave\repoDiscord\memeProvider\bin\Release\netcoreapp2.0\win10-x64\hostpolicy.dll
+C:\Users\Nescave\repoDiscord\memeProvider\bin\Release\netcoreapp2.0\win10-x64\hostfxr.dll
+C:\Users\Nescave\repoDiscord\memeProvider\bin\Release\netcoreapp2.0\win10-x64\memeProvider.exe
+C:\Users\Nescave\repoDiscord\memeProvider\bin\Release\netcoreapp2.0\win10-x64\memeProvider.deps.json
+C:\Users\Nescave\repoDiscord\memeProvider\bin\Release\netcoreapp2.0\win10-x64\memeProvider.runtimeconfig.json
+C:\Users\Nescave\repoDiscord\memeProvider\bin\Release\netcoreapp2.0\win10-x64\memeProvider.runtimeconfig.dev.json
+C:\Users\Nescave\repoDiscord\memeProvider\bin\Release\netcoreapp2.0\win10-x64\memeProvider.dll
+C:\Users\Nescave\repoDiscord\memeProvider\bin\Release\netcoreapp2.0\win10-x64\memeProvider.pdb
+C:\Users\Nescave\repoDiscord\memeProvider\obj\Release\netcoreapp2.0\win10-x64\memeProvider.csprojAssemblyReference.cache
+C:\Users\Nescave\repoDiscord\memeProvider\obj\Release\netcoreapp2.0\win10-x64\memeProvider.csproj.CoreCompileInputs.cache
+C:\Users\Nescave\repoDiscord\memeProvider\obj\Release\netcoreapp2.0\win10-x64\memeProvider.AssemblyInfoInputs.cache
+C:\Users\Nescave\repoDiscord\memeProvider\obj\Release\netcoreapp2.0\win10-x64\memeProvider.AssemblyInfo.cs
+C:\Users\Nescave\repoDiscord\memeProvider\obj\Release\netcoreapp2.0\win10-x64\memeProvider.dll
+C:\Users\Nescave\repoDiscord\memeProvider\obj\Release\netcoreapp2.0\win10-x64\memeProvider.pdb

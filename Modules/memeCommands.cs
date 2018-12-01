@@ -6,12 +6,43 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
+using memeProvider.Resources;
 
 namespace memeProvider.Modules
 {
     public class memeCommands :  ModuleBase<SocketCommandContext>
     {
 
+        private Card CardSearch(int calledID, string calledName){
+            Card calledCard = null;
+            foreach (var card in Memes.cards){
+                if(calledName == card.Value.name || calledID == card.Value.id){
+                    calledCard = card.Value;
+                    return calledCard;
+                }
+            }
+            return calledCard;
+        }
+        //Cards!
+        [Command("card")]
+        public async Task cardAsync(int calledID = 0, [Remainder]string calledName = null){
+            Card calledCard = CardSearch(calledID, calledName);
+            
+            if(calledCard != null){
+                var embed = new EmbedBuilder();
+                embed.WithAuthor(Context.Message.Author)
+                .WithImageUrl(calledCard.url)
+                .WithTitle(calledCard.name)
+                .WithDescription(calledCard.description)
+                .WithThumbnailUrl(Context.Message.Author.GetAvatarUrl(ImageFormat.Png));
+
+                await Context.Message.DeleteAsync();
+                await ReplyAsync("", false, embed);
+            }else
+                await ReplyAsync("Nie ma JESZCZE takiej karty");
+        }
+        
+        
         //BY THE POPE!
         [Command("pope"), Alias("<:by_the_pope:493411746002894864>")]
         public async Task popeAsync()

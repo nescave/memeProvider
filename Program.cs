@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 
@@ -9,12 +10,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Discord;
 using Discord.WebSocket;
 using Discord.Commands;
+using memeProvider.Resources;
 
 namespace memeProvider
 {
-    
 	public class Program
 	{
+
+        Card dupa = new Card("asd", "asds", "asdaaa", 1);
         
 		public static void Main(string[] args)
 			=> new Program().MainAsync().GetAwaiter().GetResult();
@@ -27,8 +30,8 @@ namespace memeProvider
 
 		public async Task MainAsync()
 		{   
-
-
+            Memes.CardsDictionaryInit();
+            Memes.EmotesDictionaryInit();
 
             _client = new DiscordSocketClient();
             _commands = new CommandService();
@@ -36,8 +39,6 @@ namespace memeProvider
                 .AddSingleton(_client)
                 .AddSingleton(_commands)
                 .BuildServiceProvider();
-
-            
              
             using (StreamReader streamReader = new StreamReader(path, true)){
                 token = streamReader.ReadToEnd();
@@ -106,6 +107,10 @@ namespace memeProvider
 
                 if (!result.IsSuccess)
                     Console.WriteLine(result.ErrorReason + "   ...thats fuckin why");
+                    // await context.Message.Channel.SendMessageAsync("dzwoń po pomoc, bo nie ogarniasz (!help)");
+                    // await Task.Delay(3000);
+                    // var messagesToDel = await context.Channel.GetMessagesAsync(+1).Flatten();
+                    // await context.Channel.DeleteMessagesAsync(messagesToDel);
             }
         }
 	}

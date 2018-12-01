@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/alternativeBot.csproj"
+                "${workspaceFolder}/memeProvider.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
