@@ -11,14 +11,15 @@ using Discord;
 using Discord.WebSocket;
 using Discord.Commands;
 using memeProvider.Resources;
+using memeProvider.Modules;
 
 namespace memeProvider
 {
 	public class Program
 	{
 
-        Card dupa = new Card("asd", "asds", "asdaaa", 1);
-        
+        public static bool maintenanceMode = false;
+
 		public static void Main(string[] args)
 			=> new Program().MainAsync().GetAwaiter().GetResult();
 
@@ -100,8 +101,20 @@ namespace memeProvider
                 containsEmoji = tag.ElementAt(0).ToString().Contains("Emoji");    //"Emoji", StringComparison.Ordinal); => netcoreapp 2.1 remains
             }
             
+            // if (containsEmoji){
+            //     memeCommands.
+            // }
+
             if (message.HasStringPrefix("!", ref argPos) || containsEmoji){
+
+
                 var context = new SocketCommandContext(_client, message);
+
+                if (maintenanceMode == true && message.Author.Id != 285433966939340801)
+                {
+                    await context.Channel.SendMessageAsync("trwają prace nad moją zajebistością, wstrzymaj swoją śmieszność");
+                    return;
+                }
 
                 var result = await _commands.ExecuteAsync(context, argPos, _services);
 

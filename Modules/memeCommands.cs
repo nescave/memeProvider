@@ -39,129 +39,162 @@ namespace memeProvider.Modules
                 await Context.Message.DeleteAsync();
                 await ReplyAsync("", false, embed);
             }else
-                await ReplyAsync("Nie ma JESZCZE takiej karty");
+                await ReplyAsync("Nie ma JESZCZE takiej karty - proś miłosza żeby ruszył dupe");
         }
         
-        
+        private MyEmote EmoteSearch(string call){
+            MyEmote calledEmote = null;
+            foreach(var emote in Memes.emotes){
+                if(call == emote.Key || call == emote.Value.emoteID || Context.Message.Content == emote.Value.emoteID){
+                    calledEmote = emote.Value;
+                    return calledEmote;
+                }
+            }
+            return calledEmote;
+        }
+
+        [Command("e"), Alias("<:by_the_pope:493411746002894864>",
+        "<:Gontta:417747336287223828>",
+        "<:ALKUS:334775515263270912>",
+        "<:notak:403267331264086016>",
+        "<:heh:333585033204072458>",
+        "<:damnwhat:413093188178411520>",
+        "<:mioush:425310386292523008>",
+        "<:szogun:329021218512437268>",
+        "<:Wojownicy:327477498680049667>")]
+        public async Task emoteAsync(string call = "null"){
+
+            MyEmote calledEmote = EmoteSearch(call);
+
+            if(calledEmote != null){
+                var embed = new EmbedBuilder();
+                embed.WithImageUrl(calledEmote.url)
+                    .WithAuthor(Context.Message.Author);
+                await Context.Message.DeleteAsync();
+                await ReplyAsync("", false, embed);
+            }else
+                await ReplyAsync("nie ma JESZCZE takiej emoty - proś miłosza żeby ruszył dupe");
+        }
+
         //BY THE POPE!
-        [Command("pope"), Alias("<:by_the_pope:493411746002894864>")]
-        public async Task popeAsync()
-        {
-            var embed = new EmbedBuilder();
-            embed.WithImageUrl("https://cdn.discordapp.com/attachments/327186803595411456/493413712796057602/emoji.png")
-                .WithAuthor(Context.Message.Author);
+        // [Command("pope"), Alias("<:by_the_pope:493411746002894864>")]
+        // public async Task popeAsync()
+        // {
+        //     var embed = new EmbedBuilder();
+        //     embed.WithImageUrl("https://cdn.discordapp.com/attachments/327186803595411456/493413712796057602/emoji.png")
+        //         .WithAuthor(Context.Message.Author);
 
-            await Context.Message.DeleteAsync();
-            await ReplyAsync("", false, embed);
-        }
+        //     await Context.Message.DeleteAsync();
+        //     await ReplyAsync("", false, embed);
+        // }
 
-        //GONTTA
-        [Command("gontta"), Alias("<:Gontta:417747336287223828>")]
-        public async Task gonttaAsync()
-        {
-            var embed = new EmbedBuilder();
-            embed.WithImageUrl("https://cdn.discordapp.com/emojis/417747336287223828.png?v=1")
-                .WithAuthor(Context.Message.Author);
+        // //GONTTA
+        // [Command("gontta"), Alias("<:Gontta:417747336287223828>")]
+        // public async Task gonttaAsync()
+        // {
+        //     var embed = new EmbedBuilder();
+        //     embed.WithImageUrl("https://cdn.discordapp.com/emojis/417747336287223828.png?v=1")
+        //         .WithAuthor(Context.Message.Author);
 
-            await Context.Message.DeleteAsync();
-            await ReplyAsync("", false, embed);
-        }
+        //     await Context.Message.DeleteAsync();
+        //     await ReplyAsync("", false, embed);
+        // }
     
-        //ALKUS
-        [Command("alkus"), Alias("<:ALKUS:334775515263270912>")]
-        public async Task alkusAsync()
-        {
-            var embed = new EmbedBuilder();
-            embed.WithImageUrl("https://cdn.discordapp.com/emojis/334775515263270912.png")
-                .WithAuthor(Context.Message.Author);
+        // //ALKUS
+        // [Command("alkus"), Alias("<:ALKUS:334775515263270912>")]
+        // public async Task alkusAsync()
+        // {
+        //     var embed = new EmbedBuilder();
+        //     embed.WithImageUrl("https://cdn.discordapp.com/emojis/334775515263270912.png")
+        //         .WithAuthor(Context.Message.Author);
 
-            await Context.Message.DeleteAsync();
-            await ReplyAsync("", false, embed);
-        }
+        //     await Context.Message.DeleteAsync();
+        //     await ReplyAsync("", false, embed);
+        // }
 
-        //NOTAK
-        [Command("notak"), Alias("<:notak:403267331264086016>")]
-        public async Task notakAsync()
-        {
-            var embed = new EmbedBuilder();
-            embed.WithImageUrl("https://cdn.discordapp.com/emojis/403267331264086016.png")
-                .WithAuthor(Context.Message.Author);
+        // //NOTAK
+        // [Command("notak"), Alias("<:notak:403267331264086016>")]
+        // public async Task notakAsync()
+        // {
+        //     var embed = new EmbedBuilder();
+        //     embed.WithImageUrl("https://cdn.discordapp.com/emojis/403267331264086016.png")
+        //         .WithAuthor(Context.Message.Author);
 
-            await Context.Message.DeleteAsync();
-            await ReplyAsync("", false, embed);
-        }
+        //     await Context.Message.DeleteAsync();
+        //     await ReplyAsync("", false, embed);
+        // }
 
-        //HEH
-        [Command("heh"), Alias("<:heh:333585033204072458>")]
-        public async Task hehAsync()
-        {
-            var embed = new EmbedBuilder();
-            embed.WithImageUrl("https://cdn.discordapp.com/emojis/333585033204072458.png")
-                .WithAuthor(Context.Message.Author);
+        // //HEH
+        // [Command("heh"), Alias("<:heh:333585033204072458>")]
+        // public async Task hehAsync()
+        // {
+        //     var embed = new EmbedBuilder();
+        //     embed.WithImageUrl("https://cdn.discordapp.com/emojis/333585033204072458.png")
+        //         .WithAuthor(Context.Message.Author);
 
-            await Context.Message.DeleteAsync();
-            await ReplyAsync("", false, embed);
-        }
+        //     await Context.Message.DeleteAsync();
+        //     await ReplyAsync("", false, embed);
+        // }
 
-        //DAMNWHAT
-        [Command("damnwhat"), Alias("<:damnwhat:413093188178411520>")]
-        public async Task damnwhatAsync()
-        {
-            var embed = new EmbedBuilder();
-            embed.WithImageUrl("https://cdn.discordapp.com/attachments/327186803595411456/517850761871228942/14bc742b59a690d5eb4ca176a6211c51.png")
-                .WithAuthor(Context.Message.Author);
+        // //DAMNWHAT
+        // [Command("damnwhat"), Alias("<:damnwhat:413093188178411520>")]
+        // public async Task damnwhatAsync()
+        // {
+        //     var embed = new EmbedBuilder();
+        //     embed.WithImageUrl("https://cdn.discordapp.com/attachments/327186803595411456/517850761871228942/14bc742b59a690d5eb4ca176a6211c51.png")
+        //         .WithAuthor(Context.Message.Author);
 
-            await Context.Message.DeleteAsync();
-            await ReplyAsync("", false, embed);
-        }
+        //     await Context.Message.DeleteAsync();
+        //     await ReplyAsync("", false, embed);
+        // }
 
-        //orbit
-        [Command("orbit")]
-        public async Task orbitAsync()
-        {
-            var embed = new EmbedBuilder();
-            embed.WithImageUrl("https://cdn.discordapp.com/attachments/439121299512754178/439121684537278485/output_cSHCwX.gif")
-                .WithAuthor(Context.Message.Author);
+        // //orbit
+        // [Command("orbit")]
+        // public async Task orbitAsync()
+        // {
+        //     var embed = new EmbedBuilder();
+        //     embed.WithImageUrl("https://cdn.discordapp.com/attachments/439121299512754178/439121684537278485/output_cSHCwX.gif")
+        //         .WithAuthor(Context.Message.Author);
 
-            await Context.Message.DeleteAsync();
-            await ReplyAsync("", false, embed);
-        }
+        //     await Context.Message.DeleteAsync();
+        //     await ReplyAsync("", false, embed);
+        // }
 
 
-        //FUUU
-        [Command("fu"), Alias("<:mioush:425310386292523008>")]
-        public async Task fuAsync()
-        {
-            var embed = new EmbedBuilder();
-            embed.WithImageUrl("https://cdn.discordapp.com/emojis/425310386292523008.png")
-                .WithAuthor(Context.Message.Author);
+        // //FUUU
+        // [Command("fu"), Alias("<:mioush:425310386292523008>")]
+        // public async Task fuAsync()
+        // {
+        //     var embed = new EmbedBuilder();
+        //     embed.WithImageUrl("https://cdn.discordapp.com/emojis/425310386292523008.png")
+        //         .WithAuthor(Context.Message.Author);
 
-            await Context.Message.DeleteAsync();
-            await ReplyAsync("", false, embed);
-        }
+        //     await Context.Message.DeleteAsync();
+        //     await ReplyAsync("", false, embed);
+        // }
         
-        //SZOGUN
-        [Command("szogun"), Alias("<:szogun:329021218512437268>")]
-        public async Task szogunAsync()
-        {
-            var embed = new EmbedBuilder();
-            embed.WithImageUrl("https://cdn.discordapp.com/emojis/329021218512437268.png?v=1")
-                .WithAuthor(Context.Message.Author);
+        // //SZOGUN
+        // [Command("szogun"), Alias("<:szogun:329021218512437268>")]
+        // public async Task szogunAsync()
+        // {
+        //     var embed = new EmbedBuilder();
+        //     embed.WithImageUrl("https://cdn.discordapp.com/emojis/329021218512437268.png?v=1")
+        //         .WithAuthor(Context.Message.Author);
 
-            await Context.Message.DeleteAsync();
-            await ReplyAsync("", false, embed);
-        }
+        //     await Context.Message.DeleteAsync();
+        //     await ReplyAsync("", false, embed);
+        // }
                 
-        //WOJOWNICY
-        [Command("woj"), Alias("<:Wojownicy:327477498680049667>")]
-        public async Task wojownicyAsync()
-        {
-            var embed = new EmbedBuilder();
-            embed.WithImageUrl("https://cdn.discordapp.com/emojis/327477498680049667.png")
-                .WithAuthor(Context.Message.Author);
+        // //WOJOWNICY
+        // [Command("woj"), Alias("<:Wojownicy:327477498680049667>")]
+        // public async Task wojownicyAsync()
+        // {
+        //     var embed = new EmbedBuilder();
+        //     embed.WithImageUrl("https://cdn.discordapp.com/emojis/327477498680049667.png")
+        //         .WithAuthor(Context.Message.Author);
 
-            await Context.Message.DeleteAsync();
-            await ReplyAsync("", false, embed);
-        }
+        //     await Context.Message.DeleteAsync();
+        //     await ReplyAsync("", false, embed);
+        // }
     }
 }

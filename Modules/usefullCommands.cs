@@ -12,12 +12,17 @@ namespace memeProvider.Modules
 {
     public class usefullCommands :  ModuleBase<SocketCommandContext>
     {
-        
+        [Command("devMode"), RequireOwner]
+        public async Task devMode(){
+            Program.maintenanceMode = !Program.maintenanceMode;
+            await Context.Channel.SendMessageAsync("aplikacja jest w trybie rozwoju - komendy śmiertelników przestają mieć znaczenie");
+        }
+
         [Command("del")]
         public async Task delTenAsync(int quant = 1){
             var messagesToDel = await Context.Channel.GetMessagesAsync(quant +1).Flatten();
             await Context.Channel.DeleteMessagesAsync(messagesToDel);
-            await Context.Channel.SendMessageAsync($"10 Last messages purged! {Context.User.Username}");
+            await Context.Channel.SendMessageAsync($"{quant} Last messages purged! {Context.User.Username}");
             await Task.Delay(2000);
             messagesToDel = await Context.Channel.GetMessagesAsync(1).Flatten();
             await Context.Channel.DeleteMessagesAsync(messagesToDel);
